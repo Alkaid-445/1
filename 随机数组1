@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int contains(int arr[],int lenth,int num);
+int main()
+{
+	int num,count;
+	float sum,avg;
+	int arr[10]={};
+	int lenth=sizeof(arr)/sizeof(int);
+	srand(time(NULL));
+	for(int i=1;i<=10;){
+		num=rand()%100+1;
+		int flag=contains(arr,lenth,num);
+		if(!flag){
+			arr[i]=num;
+			i++;
+		}
+
+	}
+	for(int c=1;c<=10;c++){
+		printf("%d\n",arr[c]);
+	}
+	for(int a=1;a<=10;a++){
+		sum=sum+arr[a];
+	}
+	avg=sum/10.0;
+	printf("%.2f\n",sum);
+	printf("%.2f\n",avg);
+	for(int j=1;j<=10;j++){
+		if(arr[j]<avg){
+			count++;
+		}
+	}
+	printf("%d\n",count);
+}
+int contains(int arr[],int lenth,int num)
+{
+	for(int i=1;i<=lenth;i++){
+		if(arr[i]==num){
+			return 1;
+		}
+	}
+	return 0;
+}
